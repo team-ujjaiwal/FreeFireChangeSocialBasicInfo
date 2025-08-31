@@ -157,14 +157,14 @@ def change_bio():
     user_info = get_user_info_from_api(token)
 
     return jsonify({
-        "status": "success" if status_code == 200 else "fail",
-        "http_status": status_code,
+        "token": token,
+        "newBio": newbio,
         "message": "✅ Bio updated successfully!" if status_code == 200 else "❌ Bio update failed!",
-        "bio_sent": newbio,
-        "uid": uid,
+        "nickname": user_info["nickname"],
+        "response": response_text,
         "region": region,
-        "token_region": token_region,
-        "raw_response": response_text
+        "status": "success" if status_code == 200 else "fail",
+        "uid": uid
     })
 
 @app.route('/')
